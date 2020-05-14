@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Redirection page for se-passau.github.io</title>
+</head>
+<body>
+
+    <!-- textual representaion -->
+    <div id="redirection">
+        Redirecting to <a href=""></a> in a second...
+    </div>
+
+    <script>
+        // get accessed URL
+        const sRelativeURL = window.location.pathname;
+        const sRepoName = sRelativeURL.substring(1, sRelativeURL.indexOf("/", 1) + 1);
+
+        // construct redirection URL
+        const sRedirectionBase = "https://se-sic.github.com/";
+        const sRedirectionURL = sRedirectionBase + sRepoName;
+
+        // add URL to predefined HTML link
+        const oDOMNodeLink = document.querySelector("#redirection a");
+        oDOMNodeLink.innerHTML = sRedirectionURL;
+        oDOMNodeLink.href = sRedirectionURL;
+
+        // actually redirect with timeout
+        const iRedirectionTimeout = 1; // in seconds
+        setTimeout(function() {
+            window.location.href = sRedirectionURL;
+        }, iRedirectionTimeout * 1000);
+    </script>
+
+</body>
+</html>
